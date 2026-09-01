@@ -70,9 +70,9 @@
   .wrap{max-width:1120px; margin:0 auto; padding:26px 20px 84px}
   .site-header{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:22px}
   .site-header .logo{display:inline-flex; align-items:center}
-  .site-header .wordmark{display:inline-flex; flex-direction:column; line-height:1.05; font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-weight:800; letter-spacing:.02em}
-  .site-header .wm-g{color:var(--green); font-size:15px}
-  .site-header .wm-r{color:var(--red); font-size:15px}
+  .site-header .wordmark{display:inline-flex; flex-direction:column; line-height:1.02; font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-weight:800; letter-spacing:.03em}
+  .site-header .wm-g{color:#669900; font-size:17px}
+  .site-header .wm-r{color:#A9453E; font-size:17px}
   .site-header h1{font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-size:16px; font-weight:700; color:var(--ink-soft); border-left:2px solid var(--line-strong); padding-left:12px}
   @media (max-width:520px){ .site-header h1{border-left:0; padding-left:0; flex-basis:100%} }
 
@@ -195,16 +195,17 @@
   .scene-wrap{position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--line-strong); background:#bcd; aspect-ratio:920/470}
   #scene{display:block; width:100%; height:100%}
   .hud{
-    position:absolute; left:12px; top:12px; background:rgba(20,18,15,.62); color:#fff; backdrop-filter:blur(4px);
-    border-radius:12px; padding:10px 13px; font-size:12px; line-height:1.5; pointer-events:none;
-    display:grid; grid-template-columns:auto auto; gap:2px 14px; min-width:236px; max-width:min(64%,320px);
+    position:absolute; left:10px; top:10px; background:rgba(20,18,15,.58); color:#fff; backdrop-filter:blur(3px);
+    border-radius:11px; padding:8px 11px; font-size:10.5px; line-height:1.42; pointer-events:none;
+    display:grid; grid-template-columns:auto auto; gap:1px 10px; min-width:0; max-width:46%;
   }
-  .hud .hl{color:rgba(255,255,255,.65)}
-  .hud .hv{font-family:"IBM Plex Mono",monospace; text-align:right}
-  .hud .season{grid-column:1/-1; font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-size:14px; margin-bottom:3px; border-bottom:1px solid rgba(255,255,255,.18); padding-bottom:4px}
+  .hud .hl{color:rgba(255,255,255,.62)}
+  .hud .hv{font-family:"IBM Plex Mono",monospace; text-align:right; white-space:nowrap}
+  .hud .season{grid-column:1/-1; font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-weight:800; font-size:11.5px; margin-bottom:2px; border-bottom:1px solid rgba(255,255,255,.18); padding-bottom:3px}
   .hud .hv.red{color:#ff9b8f} .hud .hv.grn{color:#7fe0a8} .hud .hv.blue{color:#8ec9ff}
-  .hud .hcost{margin-top:5px; padding-top:6px; border-top:1px solid rgba(255,255,255,.18); font-size:13px}
-  .hud .hv.hcost{font-weight:600}
+  .hud .hcost{margin-top:3px; padding-top:4px; border-top:1px solid rgba(255,255,255,.18); font-size:11.5px}
+  .hud .hv.hcost{font-weight:700}
+  @media (min-width:760px){ .hud{ font-size:11.5px; gap:2px 14px; padding:9px 13px } .hud .season{font-size:13px} .hud .hcost{font-size:12.5px} }
 
   .scene-controls{display:flex; flex-wrap:wrap; gap:16px 22px; align-items:flex-start; margin-top:16px}
   .seasons{display:flex; gap:6px; flex-wrap:wrap}
@@ -252,9 +253,33 @@
   .kpi-list .row.big .rv{font-size:16px; font-weight:500}
   .kpi-list .row.big .rv.warm{color:var(--red)} .kpi-list .row.big .rv.good{color:var(--good)}
 
-  .scen{display:flex; gap:6px; margin:6px 0 14px}
-  .scen button{border:1px solid var(--line-strong); background:var(--surface); border-radius:8px; padding:4px 10px; font-size:12px; cursor:pointer; font-family:"IBM Plex Mono",monospace}
-  .scen button[aria-pressed=true]{border-color:var(--green); background:var(--green-soft); font-weight:600}
+  .scen{display:flex; gap:8px; margin:8px 0 8px; flex-wrap:wrap}
+  .scen button{border:1px solid var(--line-strong); background:var(--surface); border-radius:9px; padding:8px 14px; font-size:13px; font-weight:700; cursor:pointer}
+  .scen button:hover{border-color:var(--green)}
+  .scen button[aria-pressed=true]{border-color:var(--green); background:var(--green-soft)}
+
+  /* ---- plain-language KPI cards ---- */
+  .plain-kpis{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:6px 0 4px}
+  .plain-kpi{background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:15px 16px}
+  .plain-kpi .pk-v{font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-weight:800; font-size:24px; color:var(--green-strong); line-height:1.1; letter-spacing:-.01em}
+  .plain-kpi .pk-l{font-size:13.5px; font-weight:700; color:var(--ink); margin-top:5px}
+  .plain-kpi .pk-s{font-size:12px; color:var(--ink-soft); margin-top:3px; line-height:1.4}
+  @media (max-width:560px){ .plain-kpis{grid-template-columns:1fr} }
+
+  h4.blk{font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-weight:800; font-size:17px; margin:26px 0 4px}
+  .blk-note{font-size:13px; color:var(--ink-soft); margin:0 0 12px; line-height:1.5; max-width:62ch}
+
+  /* ---- 20-year comparison ---- */
+  .cmp20{border:1px solid var(--line-strong); border-radius:14px; overflow:hidden; background:var(--surface); margin-bottom:4px}
+  .cmp20-row{display:flex; justify-content:space-between; align-items:center; gap:14px; padding:13px 16px; border-bottom:1px solid var(--line); font-size:14px}
+  .cmp20-l{color:var(--ink)}
+  .cmp20-v{font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:17px; white-space:nowrap; color:var(--red)}
+  .cmp20-v.pkg{color:var(--ink)}
+  .cmp20-save{display:flex; justify-content:space-between; align-items:center; gap:14px; padding:15px 16px; background:var(--green-soft)}
+  .cmp20-save span{font-weight:700; color:var(--ink); font-size:14px}
+  .cmp20-save b{font-family:"Red Hat Display",system-ui,Arial,sans-serif; font-weight:800; font-size:26px; color:var(--green-strong); white-space:nowrap; letter-spacing:-.01em}
+  .cmp20-anchor{margin:0; padding:10px 16px 12px; font-size:12.5px; color:var(--ink-soft); font-style:italic}
+
   .tco-bars{display:flex; flex-direction:column; gap:9px}
   .tco-bar{display:grid; grid-template-columns:120px 1fr auto; gap:10px; align-items:center; font-size:12.5px}
   .tco-bar .bl{color:var(--ink-soft)}
@@ -313,11 +338,14 @@
 <div class="wrap">
   <header class="site-header">
     <span class="logo" aria-hidden="true">
-      <svg viewBox="0 0 40 40" width="38" height="38">
-        <path d="M20 4 L35 16 L35 36 L5 36 L5 16 Z" fill="none" stroke="#669900" stroke-width="3.4" stroke-linejoin="round"/>
-        <rect x="13" y="22" width="6" height="6" fill="#669900"/><rect x="21" y="22" width="6" height="6" fill="#669900"/>
-        <rect x="13" y="30" width="6" height="6" fill="#669900"/><rect x="21" y="30" width="6" height="6" fill="#669900"/>
-        <path d="M27 9 C33 9 33 3 33 3 C33 3 27 3 27 9 Z" fill="#669900"/>
+      <svg viewBox="0 0 44 42" width="44" height="42">
+        <path d="M3 19 L21 4 L39 19" fill="none" stroke="#669900" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="10.5" y="20" width="9" height="9" rx="1.6" fill="#669900"/>
+        <rect x="22.5" y="20" width="9" height="9" rx="1.6" fill="#669900"/>
+        <rect x="10.5" y="31" width="9" height="9" rx="1.6" fill="#669900"/>
+        <rect x="22.5" y="31" width="9" height="9" rx="1.6" fill="#669900"/>
+        <path d="M24 7 C31 0 41 1 41 1 C41 1 40 11 32 14 C27.5 11.5 24 10.5 24 7 Z" fill="#7DB53F"/>
+        <path d="M26 9 C29 11 31 12 33 13" fill="none" stroke="#4E8400" stroke-width="1.4" stroke-linecap="round"/>
       </svg>
     </span>
     <span class="wordmark"><b class="wm-g">SOLAR</b><b class="wm-r">HÁZÉPÍTŐ</b></span>
@@ -412,18 +440,44 @@
         </div>
       </div>
 
-      <!-- SIMULATION -->
+      <!-- WHAT IT MEANS FOR YOUR WALLET -->
       <div class="panel">
-        <h3>Fogyasztási szimuláció — minden évszakra</h3>
-        <p class="psub">A szimuláció a beállított adatokból óránként számol egy jellemző napot, évszakonként. Nincs napi vagy perces számláló — csak a havi költség és néhány hasznos adat.</p>
-        <div class="seasons" id="seasons" role="group" aria-label="Évszak" style="margin-bottom:14px">
-          <button type="button" data-s="tavasz" aria-pressed="false">Tavasz</button>
-          <button type="button" data-s="nyar" aria-pressed="true">Nyár</button>
-          <button type="button" data-s="osz" aria-pressed="false">Ősz</button>
-          <button type="button" data-s="tel" aria-pressed="false">Tél</button>
+        <h3>Mit jelent ez a pénztárcádnak?</h3>
+        <p class="psub">Egyszerű nyelven: mennyi lesz a rezsid, és mennyivel jársz jobban, mint egy hagyományos házzal. Minden összeg mai árakon, becsléssel.</p>
+
+        <div class="plain-kpis" id="plainKpis"></div>
+
+        <h4 class="blk">A havi villanyszámlád évszakonként</h4>
+        <p class="blk-note" id="sccNote">Kattints egy oszlopra a részletekhez.</p>
+        <div class="season-cost-chart" id="sccChart"></div>
+
+        <h4 class="blk">Mennyibe kerül az energia 20 év alatt?</h4>
+        <p class="blk-note">Ennyit költesz összesen fűtésre, melegvízre és áramra, ha 20 évig ebben az otthonban élsz — mai pénzben, a lent kiválasztott árszinttel számolva.</p>
+        <div class="cmp20">
+          <div class="cmp20-row"><span class="cmp20-l">🏠&nbsp; Egy hagyományos, gázfűtéses ház</span><span class="cmp20-v" id="tcoLegacyV">–</span></div>
+          <div class="cmp20-row"><span class="cmp20-l">⚡&nbsp; A te Solar otthonod</span><span class="cmp20-v pkg" id="tcoPkgV">–</span></div>
+          <div class="cmp20-save"><span>Ennyi marad a zsebedben 20 év alatt</span><b id="tcoSaveV">–</b></div>
+          <p class="cmp20-anchor" id="tco20Anchor"></p>
         </div>
-        <div class="sim-grid">
-          <div>
+
+        <h4 class="blk">És ha az áram ára emelkedik?</h4>
+        <div class="scen" id="scen" role="group" aria-label="Áram-árszint">
+          <button type="button" data-e="0" aria-pressed="true">Mai ár</button>
+          <button type="button" data-e="0.5" aria-pressed="false">50%-kal drágább</button>
+          <button type="button" data-e="1" aria-pressed="false">Kétszer drágább</button>
+        </div>
+        <p class="blk-note" id="scenNote"></p>
+
+        <details class="assumptions" style="margin-top:18px">
+          <summary>Részletes műszaki adatok (szakembereknek)</summary>
+          <div class="assump-body">
+            <div class="cl">Válassz évszakot — <b id="kpiSeasonName">Nyár</b> · egy jellemző nap órái</div>
+            <div class="seasons" id="seasons" role="group" aria-label="Évszak" style="margin:10px 0 12px">
+              <button type="button" data-s="tavasz" aria-pressed="false">Tavasz</button>
+              <button type="button" data-s="nyar" aria-pressed="true">Nyár</button>
+              <button type="button" data-s="osz" aria-pressed="false">Ősz</button>
+              <button type="button" data-s="tel" aria-pressed="false">Tél</button>
+            </div>
             <div class="h24-legend">
               <span><i style="background:var(--red)"></i>Fogyasztás</span>
               <span><i style="background:var(--green)"></i>Napelem-termelés</span>
@@ -431,28 +485,9 @@
             </div>
             <svg class="h24" id="h24" viewBox="0 0 360 150" preserveAspectRatio="none" aria-hidden="true"></svg>
             <div class="mono" id="h24cap" style="font-size:11.5px;color:var(--ink-faint);margin-top:4px"></div>
-
-            <div style="margin-top:20px" class="cl"><span class="cl">Havi energiaköltség évszakonként</span></div>
-            <div class="season-cost-chart" id="sccChart" style="margin-top:10px"></div>
+            <div class="kpi-list" id="seasonKpis" style="margin-top:14px"></div>
           </div>
-          <div>
-            <div class="cl">Kiválasztott évszak — <b id="kpiSeasonName">Nyár</b></div>
-            <div class="kpi-list" id="seasonKpis"></div>
-
-            <div style="margin-top:20px" class="cl">20 éves energiaköltség</div>
-            <div class="scen" id="scen" role="group" aria-label="Energiaár-forgatókönyv">
-              <button type="button" data-e="0" aria-pressed="true">most</button>
-              <button type="button" data-e="0.3" aria-pressed="false">+30%</button>
-              <button type="button" data-e="0.5" aria-pressed="false">+50%</button>
-              <button type="button" data-e="1" aria-pressed="false">+100%</button>
-            </div>
-            <div class="tco-bars">
-              <div class="tco-bar legacy"><span class="bl">Hagyományos</span><span class="bt"><i id="tcoLegacy"></i></span><span class="bv" id="tcoLegacyV">–</span></div>
-              <div class="tco-bar pkg"><span class="bl">Az Ön csomagja</span><span class="bt"><i id="tcoPkg"></i></span><span class="bv" id="tcoPkgV">–</span></div>
-              <div class="tco-bar save"><span class="bl">Megspórolható</span><span class="bt"><i id="tcoSave"></i></span><span class="bv" id="tcoSaveV">–</span></div>
-            </div>
-          </div>
-        </div>
+        </details>
       </div>
 
       <!-- EQUIPMENT + ASSUMPTIONS -->
@@ -499,7 +534,7 @@
     uaPerM2:0.85, uaCoolPerM2:0.90, gainPeakKw:1.6,
     evKwh:2500, evPlanKwh:1200, poolKwh:2600,
     buyPrice:40, feedPrice:20, standingMo:2000,
-    legacyFtM2:8500, co2Grid:0.23, co2GasM2:22, years:20,
+    legacyFtM2:4800, co2Grid:0.23, co2GasM2:22, years:20,
     daysEach:91.25,
     score:{ icf:16, finish:{szerkezetkesz:0,emelt:3,kulcs:6}, hp:16, nofossil:5, vent:9, pv:18, accu:12, indep:12, loxone:10, shade:4, evready:2 }
   };
@@ -1014,6 +1049,7 @@
     });
 
     // season cost chart
+    renderPlainKpis();
     renderSeasonCostChart();
     renderTco();
     fillAssumptions();
@@ -1023,6 +1059,10 @@
     var host=$('sccChart'); host.innerHTML='';
     var vals = SEAS_ORDER.map(function(k){ return sims[k].monthly; });
     var mx = Math.max.apply(null, vals), mn = Math.min.apply(null, vals);
+    var ord = SEAS_ORDER.slice().sort(function(a,b){ return sims[a].monthly - sims[b].monthly; });
+    var noteEl = $('sccNote');
+    if(noteEl) noteEl.textContent = SEAS[ord[0]].label + 'on a legalacsonyabb — ilyenkor a napelem sokat termel; ' +
+      SEAS[ord[3]].label + 'en a legmagasabb a fűtési szezon miatt. Kattints egy oszlopra a részletekhez.';
     SEAS_ORDER.forEach(function(k,i){
       var v=vals[i];
       var t = mx>mn ? clamp((v-mn)/(mx-mn),0,1) : 0;
@@ -1044,15 +1084,52 @@
     return 'rgb('+c[0]+','+c[1]+','+c[2]+')';
   }
 
+  function renderPlainKpis(){
+    var host = $('plainKpis'); if(!host) return;
+    var monthly = annual.cost/12;
+    var saveMo = Math.max(0, (report.baseYr - annual.cost)/12);
+    var save20now = Math.max(0, report.baseYr - annual.cost) * CFG.years;
+    var selfTxt = derived.pvKwp>0 ? Math.round(annual.selfPct)+'%' : '0%';
+    var cards = [
+      ['Havi villanyszámlád', monthly<=800 ? '≈ 0 Ft' : ftr(Math.round(monthly/500)*500),
+        'az egész évet átlagolva — télen több, nyáron szinte semmi'],
+      ['Az áramod ennyi részét termeled magad', selfTxt,
+        derived.pvKwp>0 ? 'a tetőn lévő napelem és az akkumulátor jóvoltából' : 'az Eco csomag nem tartalmaz napelemet'],
+      ['Havonta ennyivel fizetsz kevesebbet', '≈ ' + ftr(Math.round(saveMo/500)*500),
+        'egy hagyományos, gázfűtéses átlagházhoz képest'],
+      ['20 év alatt a zsebedben marad', mft(save20now),
+        'ennyit nem kell energiára elköltened (mai árakon)']
+    ];
+    host.innerHTML = cards.map(function(c){
+      return '<div class="plain-kpi"><div class="pk-v">'+c[1]+'</div><div class="pk-l">'+c[0]+'</div><div class="pk-s">'+c[2]+'</div></div>';
+    }).join('');
+  }
+
   function renderTco(){
-    var m = 1 + state.scenario/2;
-    var pkg20 = annual.cost*CFG.years*m;
-    var base20 = report.baseYr*CFG.years*m;
-    var save20 = Math.max(0, base20-pkg20);
-    var mx = Math.max(base20,1);
-    $('tcoLegacy').style.width=(base20/mx*100)+'%'; $('tcoLegacyV').textContent=mft(base20);
-    $('tcoPkg').style.width=(pkg20/mx*100)+'%';    $('tcoPkgV').textContent=mft(pkg20);
-    $('tcoSave').style.width=(save20/mx*100)+'%';  $('tcoSaveV').textContent=mft(save20);
+    var e = state.scenario;                 // 0 | 0.5 | 1  → az áram ára 1× / 1,5× / 2×
+    var m = 1 + e;
+    var years = CFG.years;
+    var standingYr = CFG.standingMo * 12;
+    var pkgVar = Math.max(0, annual.cost - standingYr);   // a rész, ami az áram árától függ
+    var pkgYr = pkgVar * m + standingYr;
+    var pkg20 = pkgYr * years;
+    var base20 = report.baseYr * m * years;
+    var save20 = Math.max(0, base20 - pkg20);
+    $('tcoLegacyV').textContent = mft(base20);
+    $('tcoPkgV').textContent = mft(pkg20);
+    $('tcoSaveV').textContent = mft(save20);
+
+    var sM = save20 / 1e6;
+    $('tco20Anchor').textContent =
+      sM >= 15 ? 'Ez már egy nagyobb új autó vagy egy teljes lakásfelújítás ára.' :
+      sM >= 9  ? 'Ez nagyjából egy jó középkategóriás új autó ára.' :
+      sM >= 5  ? 'Ez nagyjából egy teljes belső befejezés ára (konyha, fürdők, burkolatok).' :
+      sM >= 2.5 ? 'Ez több évnyi teljes rezsi, amit nem a szolgáltatónak fizetsz.' :
+      'Ennyivel kevesebbet visz el az energia a családi kasszából.';
+
+    $('scenNote').textContent = e === 0
+      ? 'A mai árszinttel számoltunk. Váltogasd a gombokat, és nézd meg, mi történik, ha az áram drágul.'
+      : 'Ha az áram tartósan ' + (e === 0.5 ? '50%-kal' : 'kétszer') + ' drágább lesz, a hagyományos ház 20 éves energiaköltsége kb. ' + mft(base20) + '-ra ugrik. A te otthonod is drágul, de jóval kevésbé — mert az áramod nagy részét a saját napeleme adja. Így a különbség a javadra ' + mft(save20) + '-ra nő.';
   }
 
   function fillAssumptions(){
@@ -1259,235 +1336,241 @@
     var W=cvs.width, H=cvs.height, sx=W/LW, sy=H/LH;
     ctx.save(); ctx.scale(sx,sy);
     ctx.clearRect(0,0,LW,LH);
-    var weather = state.sceneWeather;                       // 'nap' | 'eso' | 'ho'
+    var weather = state.sceneWeather;
     var cold = weather==='ho' || state.outdoorT <= 1;
-    var seasonKey = cold ? 'tel' : (weather==='eso' ? 'osz' : 'nyar');
+    var foliage = cold ? 'tel' : (weather==='eso' ? 'osz' : 'nyar');
     var inst = computeInstant();
     var heating = state.hvacMode==='futes';
 
     // live indoor temperature easing
     var tgt = state.indoorSet;
-    if(heating && state.outdoorT > state.indoorSet)
-      tgt = state.indoorSet + Math.min(3,(state.outdoorT-state.indoorSet)*0.3);
-    if(!heating && state.outdoorT < state.indoorSet)
-      tgt = state.indoorSet - Math.min(3,(state.indoorSet-state.outdoorT)*0.3);
+    if(heating && state.outdoorT > state.indoorSet) tgt = state.indoorSet + Math.min(3,(state.outdoorT-state.indoorSet)*0.3);
+    if(!heating && state.outdoorT < state.indoorSet) tgt = state.indoorSet - Math.min(3,(state.indoorSet-state.outdoorT)*0.3);
     sceneIndoorNow += (tgt - sceneIndoorNow) * (reduce ? 1 : 0.05);
     if(Math.abs(tgt - sceneIndoorNow) < 0.05) sceneIndoorNow = tgt;
 
-    // sky
-    var g = ctx.createLinearGradient(0,0,0,LH);
-    g.addColorStop(0, SKY[weather][0]); g.addColorStop(1, SKY[weather][1]);
-    ctx.fillStyle=g; ctx.fillRect(0,0,LW,LH);
+    // ---- geometry (top-down site plan) ----
+    var plot = { x:16, y:14, w:LW-32, h:LH-28 };
+    var hs = { x:452, y:70, w:282, h:214 };                 // house sits right-of-centre; top-left stays open for the HUD
+    var hcx = hs.x+hs.w/2, hcy = hs.y+hs.h/2;
+    var pool = { x:58, y:312, w:196, h:128 };               // bottom-left yard
+    var drive = { x:566, y:hs.y+hs.h, w:80, h:plot.y+plot.h-(hs.y+hs.h) };
+    var hpU = { x:414, y:150, w:30, h:30 };
+    var trees = [ {x:858,y:64,r:34}, {x:868,y:404,r:30}, {x:392,y:432,r:24} ];
+    function overPool(tr){ return state.pool && tr.x+tr.r>pool.x-20 && tr.x-tr.r<pool.x+pool.w+20 && tr.y+tr.r>pool.y-20 && tr.y-tr.r<pool.y+pool.h+20; }
 
-    // sun
-    var day = (t/26) % 1;
-    var sunX = 90 + day*740, sunY = 360 - Math.sin(Math.PI*day)*300;
-    if(weather==='nap' || weather==='ho'){
-      var glow = weather==='nap' ? 60 : 30;
-      var sg = ctx.createRadialGradient(sunX,sunY,4,sunX,sunY,glow);
-      sg.addColorStop(0, weather==='nap'?'rgba(255,241,200,.95)':'rgba(255,250,235,.8)');
-      sg.addColorStop(1,'rgba(255,241,200,0)');
-      ctx.fillStyle=sg; ctx.beginPath(); ctx.arc(sunX,sunY,glow,0,7); ctx.fill();
-      ctx.fillStyle = weather==='nap' ? '#FFE9A8' : '#FFF4DC';
-      ctx.beginPath(); ctx.arc(sunX,sunY, weather==='nap'?17:13, 0,7); ctx.fill();
-      if(weather==='nap'){
-        ctx.strokeStyle='rgba(255,232,160,.5)'; ctx.lineWidth=2;
-        for(var r=0;r<10;r++){ var a=t*0.5 + r*Math.PI/5; ctx.beginPath();
-          ctx.moveTo(sunX+Math.cos(a)*22, sunY+Math.sin(a)*22);
-          ctx.lineTo(sunX+Math.cos(a)*32, sunY+Math.sin(a)*32); ctx.stroke(); }
+    // ---- grass / plot ----
+    var grass = cold ? '#E8EFF4' : weather==='eso' ? '#5C8C52' : '#7FB266';
+    roundRect(plot.x,plot.y,plot.w,plot.h,18); ctx.fillStyle=grass; ctx.fill();
+    ctx.save(); roundRect(plot.x,plot.y,plot.w,plot.h,18); ctx.clip();
+    var lite = cold ? 'rgba(255,255,255,.35)' : 'rgba(255,255,255,.06)';
+    var dk   = cold ? 'rgba(175,198,214,.22)' : 'rgba(0,45,0,.05)';
+    for(var s=0;s<9;s++){ ctx.fillStyle = s%2 ? lite : dk; ctx.fillRect(plot.x + s*(plot.w/9), plot.y, plot.w/9+1, plot.h); }
+    ctx.restore();
+
+    // ---- sun shadows (only when sunny) ----
+    var shadowOn = weather==='nap';
+    var shOff = 15 + (reduce?0:Math.sin(t*0.5)*2);
+    function shRect(x,y,w,h,r){ if(!shadowOn) return; ctx.fillStyle='rgba(28,38,22,.16)'; roundRect(x+shOff, y+shOff*1.15, w, h, r||6); ctx.fill(); }
+    function shCircle(x,y,r){ if(!shadowOn) return; ctx.fillStyle='rgba(28,38,22,.15)'; ctx.beginPath(); ctx.arc(x+shOff, y+shOff*1.15, r, 0, 7); ctx.fill(); }
+
+    // ---- driveway + garden path ----
+    ctx.fillStyle = cold ? '#D8DEE3' : '#D8D4CB';
+    roundRect(drive.x, drive.y-12, drive.w, drive.h+12, 8); ctx.fill();
+    ctx.strokeStyle = cold ? '#D8DEE3' : '#D8D4CB'; ctx.lineWidth=13; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(hs.x+44, hs.y+hs.h+6); ctx.quadraticCurveTo(210, 432, trees[1].x+10, trees[1].y-18); ctx.stroke();
+    ctx.lineCap='butt';
+    if(weather==='eso'){ // wet sheen on driveway
+      ctx.save(); roundRect(drive.x, drive.y-12, drive.w, drive.h+12, 8); ctx.clip();
+      ctx.fillStyle='rgba(150,180,205,.18)';
+      for(var q=0;q<3;q++){ ctx.fillRect(drive.x+8, drive.y + ((t*40+q*60)% (drive.h)) , drive.w-16, 10); }
+      ctx.restore();
+    }
+
+    // ---- pool ----
+    if(state.pool){
+      shRect(pool.x,pool.y,pool.w,pool.h,14);
+      ctx.fillStyle = cold ? '#DBE6EC' : '#DCD7CC';
+      roundRect(pool.x-6,pool.y-6,pool.w+12,pool.h+12,18); ctx.fill();
+      if(cold){
+        ctx.fillStyle='#CBD8DF'; roundRect(pool.x,pool.y,pool.w,pool.h,12); ctx.fill();
+        ctx.strokeStyle='rgba(255,255,255,.7)'; ctx.lineWidth=2;
+        ctx.beginPath();
+        ctx.moveTo(pool.x+18,pool.y+26); ctx.lineTo(pool.x+pool.w-40,pool.y+pool.h-22);
+        ctx.moveTo(pool.x+pool.w-24,pool.y+18); ctx.lineTo(pool.x+34,pool.y+pool.h-28);
+        ctx.stroke();
+      } else {
+        var pg = ctx.createLinearGradient(pool.x,pool.y,pool.x,pool.y+pool.h);
+        pg.addColorStop(0,'#38A2D1'); pg.addColorStop(1,'#2377AC');
+        ctx.fillStyle=pg; roundRect(pool.x,pool.y,pool.w,pool.h,12); ctx.fill();
+        ctx.save(); roundRect(pool.x,pool.y,pool.w,pool.h,12); ctx.clip();
+        ctx.strokeStyle='rgba(255,255,255,.26)'; ctx.lineWidth=2;
+        for(var wv=0;wv<5;wv++){ ctx.beginPath();
+          for(var xx=0;xx<=pool.w;xx+=8) ctx.lineTo(pool.x+xx, pool.y+22+wv*28 + (reduce?0:Math.sin(t*1.5+xx*0.055+wv)*2.2));
+          ctx.stroke(); }
+        ctx.restore();
       }
     }
 
-    // clouds
-    if(weather!=='nap'){
-      particles.clouds.forEach(function(c){
-        c.x += (reduce?0:c.v*0.016);
-        if(c.x > LW+120) c.x = -140;
-        drawCloud(c.x, c.y, c.sc, weather==='eso'?'#6E7B84':'#C8D2DC', weather==='eso'?.9:.8);
-      });
-    }
-
-    // distant hill
-    ctx.fillStyle = cold ? '#D9E2EC' : weather==='eso' ? '#7E9A6E' : '#8FB877';
-    ctx.beginPath(); ctx.moveTo(0,360);
-    ctx.quadraticCurveTo(240,300, 520,352); ctx.quadraticCurveTo(760,392, LW,346);
-    ctx.lineTo(LW,LH); ctx.lineTo(0,LH); ctx.fill();
-
-    // ground
-    ctx.fillStyle = cold ? '#EDF1F6' : weather==='eso' ? '#4E8A4A' : '#57A052';
-    ctx.fillRect(0,376,LW,LH-376);
-    if(cold){ ctx.fillStyle='rgba(255,255,255,.6)'; ctx.fillRect(0,376,LW,22); }
-
-    // trees
-    drawTree(760, 300, seasonKey, t);
-    drawTree(120, 330, seasonKey, t, 0.8);
-
-    // ===== HOUSE =====
-    var hx=320, hy=196, hw=300, hh=182, groundY=378;
-    ctx.fillStyle='#F1E7D4'; ctx.fillRect(hx, groundY-hh, hw, hh);
-    ctx.fillStyle='#E1D3B7'; ctx.fillRect(hx+hw-46, groundY-hh, 46, hh);
-    ctx.fillStyle='#B23A2E';
-    ctx.beginPath(); ctx.moveTo(hx-24, groundY-hh);
-    ctx.lineTo(hx+hw/2, groundY-hh-78); ctx.lineTo(hx+hw+24, groundY-hh); ctx.closePath(); ctx.fill();
-    ctx.fillStyle='#8E2B22';
-    ctx.beginPath(); ctx.moveTo(hx+hw/2, groundY-hh-78); ctx.lineTo(hx+hw+24, groundY-hh); ctx.lineTo(hx+hw-10,groundY-hh); ctx.closePath(); ctx.fill();
-    if(cold){
-      ctx.fillStyle='rgba(255,255,255,.9)';
-      ctx.beginPath(); ctx.moveTo(hx-20, groundY-hh-2);
-      ctx.lineTo(hx+hw/2, groundY-hh-74); ctx.lineTo(hx+hw+20, groundY-hh-2);
-      ctx.lineTo(hx+hw+14,groundY-hh+4); ctx.lineTo(hx+hw/2, groundY-hh-66); ctx.lineTo(hx-14,groundY-hh+4); ctx.fill();
-    }
-    ctx.fillStyle='#9A8B72'; ctx.fillRect(hx+hw-70, groundY-hh-64, 24, 40);
-    ctx.fillStyle='#6E6154'; ctx.fillRect(hx+hw-72, groundY-hh-70, 28, 8);
-    ctx.fillStyle='#1F7A4D'; ctx.fillRect(hx+30, groundY-92, 46, 92);
-    ctx.fillStyle='#D9C48A'; ctx.beginPath(); ctx.arc(hx+68, groundY-46, 3,0,7); ctx.fill();
-    var louvers = derived.sys.shade && !heating && state.outdoorT>24;
-    [ [hx+110,groundY-120,58,58], [hx+196,groundY-120,58,58], [hx+110,groundY-hh+20,58,44] ].forEach(function(w){
-      ctx.fillStyle='#EDEDE7'; ctx.fillRect(w[0]-4,w[1]-4,w[2]+8,w[3]+8);
-      ctx.fillStyle= (weather==='nap') ? '#CDE9F0' : '#B9D6DF'; ctx.fillRect(w[0],w[1],w[2],w[3]);
-      ctx.strokeStyle='#EDEDE7'; ctx.lineWidth=3;
-      ctx.beginPath(); ctx.moveTo(w[0]+w[2]/2,w[1]); ctx.lineTo(w[0]+w[2]/2,w[1]+w[3]);
-      ctx.moveTo(w[0],w[1]+w[3]/2); ctx.lineTo(w[0]+w[2],w[1]+w[3]/2); ctx.stroke();
-      if(state.outdoorT < -2){
-        ctx.fillStyle='rgba(255,255,255,.30)'; ctx.fillRect(w[0],w[1],w[2],w[3]);
-      }
-      if(louvers){
-        ctx.fillStyle='rgba(60,45,30,.5)';
-        for(var lv=0; lv<5; lv++) ctx.fillRect(w[0], w[1]+lv*12, w[2], 6);
-      }
+    // ---- trees ----
+    trees.forEach(function(tr,i){
+      if(overPool(tr)) return;
+      shCircle(tr.x,tr.y,tr.r*0.9);
+      drawCanopy(tr.x, tr.y, tr.r, foliage, t, i);
     });
 
-    // solar panels on roof
+    // ---- house ----
+    shRect(hs.x,hs.y,hs.w,hs.h,6);
+    ctx.fillStyle='#B7B2A9'; roundRect(hs.x,hs.y,hs.w,hs.h,6); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.06)'; ctx.fillRect(hs.x+2, hs.y+2, hs.w/2-3, hs.h-4);
+    ctx.strokeStyle='#8B857A'; ctx.lineWidth=2.5; roundRect(hs.x,hs.y,hs.w,hs.h,6); ctx.stroke();
+    ctx.strokeStyle='#A19B90'; ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(hcx, hs.y+6); ctx.lineTo(hcx, hs.y+hs.h-6); ctx.stroke();
+    ctx.fillStyle='#9A948A'; roundRect(hs.x+22, hs.y+16, 15, 15, 3); ctx.fill();
+    ctx.fillStyle = weather==='nap' ? '#CFEAF2' : '#AEC9D2';
+    roundRect(hs.x+42, hcy-15, 46, 30, 3); ctx.fill();
+    ctx.strokeStyle='#8B857A'; ctx.lineWidth=1.5; roundRect(hs.x+42, hcy-15, 46, 30, 3); ctx.stroke();
+    if(derived.sys.shade){
+      ctx.save(); ctx.globalAlpha=.5; ctx.strokeStyle='#8B857A'; ctx.lineWidth=2;
+      for(var pgr=0; pgr<8; pgr++){ var xx2=hcx+10+pgr*12; ctx.beginPath(); ctx.moveTo(xx2, hs.y+hs.h); ctx.lineTo(xx2, hs.y+hs.h+22); ctx.stroke(); }
+      ctx.restore();
+    }
+
+    // ---- solar panels: right roof half, always inside footprint ----
     if(derived.pvKwp>0){
       var on = state.solarOn;
-      var pxs = hx+18, pys = groundY-hh-6, pw=8, cols=Math.min(10, Math.round(derived.pvKwp*1.1)+4), rows=3, gap=3, cw=13, chh=12;
+      var pa = { x:hcx+10, y:hs.y+14, w:hs.w/2-24, h:hs.h-28 };
+      var target = Math.max(4, Math.round(derived.pvKwp));
+      var cols = Math.min(6, Math.max(2, Math.round(Math.sqrt(target*pa.w/pa.h))));
+      var rows = Math.min(7, Math.ceil(target/cols));
+      var gp = 4;
+      var cw = (pa.w - gp*(cols-1))/cols;
+      var ch = (pa.h - gp*(rows-1))/rows;
       for(var rI=0;rI<rows;rI++) for(var cI=0;cI<cols;cI++){
-        var px = pxs + cI*(cw+gap) - rI*9;
-        var py = pys - rI*(chh+gap) - 4;
-        ctx.fillStyle = on ? '#1B2A3C' : '#7C7A72';
-        ctx.fillRect(px,py,cw,chh);
+        var px = pa.x + cI*(cw+gp), py = pa.y + rI*(ch+gp);
+        ctx.fillStyle = on ? '#1E2C3E' : '#8B887F';
+        roundRect(px,py,cw,ch,2); ctx.fill();
         if(on){
-          ctx.fillStyle='#31527A'; ctx.fillRect(px+1,py+1,cw-2,chh-2);
-          var gl = (Math.sin(t*1.4 + cI*0.5 + rI)*0.5+0.5);
-          if(gl>0.75){ ctx.fillStyle='rgba(150,200,240,'+((gl-0.75)*2.2)+')'; ctx.fillRect(px+1,py+1,cw-2,4); }
+          ctx.fillStyle='#33547C'; roundRect(px+1.5,py+1.5,cw-3,ch-3,1.5); ctx.fill();
+          ctx.strokeStyle='rgba(255,255,255,.10)'; ctx.lineWidth=1;
+          ctx.beginPath(); ctx.moveTo(px+cw/2,py+2); ctx.lineTo(px+cw/2,py+ch-2); ctx.stroke();
+          var gl = Math.sin(t*1.3 + cI*0.7 + rI*0.9)*0.5+0.5;
+          if(gl>0.78){ ctx.fillStyle='rgba(170,210,240,'+((gl-0.78)*2.6)+')'; roundRect(px+1.5,py+1.5,cw-3,(ch-3)*0.42,1.5); ctx.fill(); }
         }
       }
     }
 
-    // heat pump unit (left of house)
-    var hpX=hx-70, hpY=groundY-44;
-    ctx.fillStyle='#D6D6D6'; ctx.fillRect(hpX,hpY,52,42);
-    ctx.strokeStyle='#B4B4B4'; ctx.strokeRect(hpX,hpY,52,42);
-    var hpActive = inst.hpKw > 0.15;
-    ctx.save(); ctx.translate(hpX+26, hpY+21);
-    var spinSpeed = hpActive ? (2 + Math.min(11, inst.hpKw*1.7)) : 0.35;
-    ctx.rotate(reduce ? 0.6 : t*spinSpeed);
-    ctx.strokeStyle='#555'; ctx.lineWidth=3;
-    for(var f=0;f<3;f++){ ctx.rotate(Math.PI*2/3); ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-15); ctx.stroke(); }
-    ctx.restore();
-    if(hpActive){
-      var ga = 0.12 + Math.min(0.30, inst.hpKw*0.05);
-      ctx.fillStyle = heating ? 'rgba(220,90,60,'+ga+')' : 'rgba(90,150,220,'+ga+')';
-      ctx.beginPath(); ctx.arc(hpX+26,hpY+21,33,0,7); ctx.fill();
-    }
-
-    // battery box on wall
+    // ---- battery on left wall ----
     if(derived.accu>0){
-      ctx.fillStyle='#2E2E2E'; ctx.fillRect(hx+hw-38, groundY-70, 24, 40);
-      var led = (Math.sin(t*2)*0.5+0.5);
-      ctx.fillStyle = 'rgba(80,210,130,'+(0.4+led*0.6)+')'; ctx.fillRect(hx+hw-32, groundY-64, 12, 4);
+      ctx.fillStyle='#2C2C2C'; roundRect(hs.x-9, hcy-22, 12, 44, 2); ctx.fill();
+      var led = Math.sin(t*2)*0.5+0.5;
+      ctx.fillStyle='rgba(120,220,150,'+(0.45+led*0.55)+')'; ctx.fillRect(hs.x-6, hcy-16, 6, 5);
     }
 
-    // EV charger + car
+    // ---- heat pump ----
+    ctx.fillStyle = cold ? '#D2D8DC' : '#CFCBC2'; roundRect(hpU.x-8, hpU.y-8, hpU.w+16, hpU.h+16, 4); ctx.fill();
+    shRect(hpU.x,hpU.y,hpU.w,hpU.h,4);
+    ctx.fillStyle='#DADADA'; roundRect(hpU.x,hpU.y,hpU.w,hpU.h,4); ctx.fill();
+    ctx.strokeStyle='#B2B2B2'; ctx.lineWidth=2; roundRect(hpU.x,hpU.y,hpU.w,hpU.h,4); ctx.stroke();
+    var hpActive = inst.hpKw > 0.15;
+    var fx = hpU.x+hpU.w/2, fy = hpU.y+hpU.h/2;
+    if(hpActive){
+      var pr = 20 + (reduce?0:(Math.sin(t*3)*0.5+0.5)*10);
+      ctx.strokeStyle = heating ? 'rgba(220,90,60,.38)' : 'rgba(80,150,220,.38)';
+      ctx.lineWidth=2; ctx.beginPath(); ctx.arc(fx,fy,pr,0,7); ctx.stroke();
+    }
+    ctx.save(); ctx.translate(fx,fy);
+    ctx.rotate(reduce?0.5 : t*(hpActive ? 2+Math.min(11,inst.hpKw*1.7) : 0.3));
+    ctx.strokeStyle='#666'; ctx.lineWidth=2.4;
+    for(var f=0;f<3;f++){ ctx.rotate(Math.PI*2/3); ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,-10); ctx.stroke(); }
+    ctx.fillStyle='#666'; ctx.beginPath(); ctx.arc(0,0,2.4,0,7); ctx.fill();
+    ctx.restore();
+
+    // ---- EV car + wallbox ----
     if(state.ev!=='nincs'){
-      var carX = hx+hw+40;
-      ctx.globalAlpha = state.ev==='tervezem'?0.5:1;
-      ctx.fillStyle='#3B6EA5'; roundRect(carX, groundY-34, 70, 24, 6); ctx.fill();
-      ctx.fillStyle='#2C557F'; roundRect(carX+12, groundY-46, 40, 16, 5); ctx.fill();
-      ctx.fillStyle='#222'; ctx.beginPath(); ctx.arc(carX+16,groundY-10,7,0,7); ctx.arc(carX+54,groundY-10,7,0,7); ctx.fill();
-      // wallbox
-      ctx.fillStyle='#EDEDED'; ctx.fillRect(carX+78, groundY-52, 12, 22);
-      var pulse = (Math.sin(t*3)*0.5+0.5);
-      ctx.fillStyle='rgba(80,200,130,'+(0.35+pulse*0.55)+')'; ctx.fillRect(carX+80, groundY-48, 8, 5);
-      ctx.globalAlpha=1;
-    }
-
-    // pool
-    if(state.pool){
-      var poX=120, poY=groundY-8;
-      if(cold){ ctx.fillStyle='#C7D2DA'; roundRect(poX,poY,150,34,6); ctx.fill(); }
-      else {
-        ctx.fillStyle='#2E8BC0'; roundRect(poX,poY,150,34,6); ctx.fill();
-        ctx.strokeStyle='rgba(255,255,255,.4)'; ctx.lineWidth=1.5;
-        for(var wv=0;wv<3;wv++){ ctx.beginPath();
-          for(var xx=0;xx<=150;xx+=10) ctx.lineTo(poX+xx, poY+10+wv*9+Math.sin(t*2+xx*0.2+wv)*1.6);
-          ctx.stroke(); }
+      var planned = state.ev==='tervezem';
+      var car = { x:drive.x+13, y:plot.y+plot.h-100, w:54, h:88 };
+      ctx.save();
+      if(planned) ctx.globalAlpha=.45; else shRect(car.x,car.y,car.w,car.h,10);
+      ctx.fillStyle='#33557F'; roundRect(car.x,car.y,car.w,car.h,10); ctx.fill();
+      ctx.fillStyle='#4A6E9C'; roundRect(car.x+7, car.y+20, car.w-14, car.h-40, 6); ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,.35)'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(car.x+8,car.y+18); ctx.lineTo(car.x+car.w-8,car.y+18);
+      ctx.moveTo(car.x+8,car.y+car.h-16); ctx.lineTo(car.x+car.w-8,car.y+car.h-16); ctx.stroke();
+      ctx.fillStyle='#222';
+      [[car.x-3,car.y+14],[car.x+car.w-5,car.y+14],[car.x-3,car.y+car.h-26],[car.x+car.w-5,car.y+car.h-26]].forEach(function(w){ roundRect(w[0],w[1],8,14,3); ctx.fill(); });
+      if(planned){ ctx.setLineDash([5,4]); ctx.strokeStyle='#4A6E9C'; ctx.lineWidth=2; roundRect(car.x,car.y,car.w,car.h,10); ctx.stroke(); ctx.setLineDash([]); }
+      ctx.restore();
+      ctx.fillStyle='#EDEDED'; roundRect(hcx-6, hs.y+hs.h-4, 14, 16, 2); ctx.fill();
+      ctx.strokeStyle='#B8B8B8'; ctx.lineWidth=1; roundRect(hcx-6, hs.y+hs.h-4, 14, 16, 2); ctx.stroke();
+      if(!planned){
+        var x0=hcx+1, y0=hs.y+hs.h+12, x1=car.x+car.w/2, y1=car.y+6;
+        ctx.strokeStyle='rgba(70,110,55,.55)'; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(x0-12,y1+22, x1,y1); ctx.stroke();
+        var pp = reduce?0.5:(t*0.5)%1;
+        ctx.fillStyle='rgba(120,220,150,.9)';
+        ctx.beginPath(); ctx.arc(x0+(x1-x0)*pp, y0+(y1-y0)*pp, 3, 0, 7); ctx.fill();
       }
     }
 
-    // ambient weather particles (front layer)
+    // ---- snow accumulation ----
+    if(cold){
+      ctx.fillStyle='rgba(255,255,255,.85)';
+      roundRect(hs.x+3, hs.y+3, hs.w-6, 13, 4); ctx.fill();
+      roundRect(hs.x+3, hs.y+hs.h-16, hs.w-6, 13, 4); ctx.fill();
+      trees.forEach(function(tr){ if(overPool(tr)) return;
+        ctx.beginPath(); ctx.arc(tr.x-tr.r*0.18, tr.y-tr.r*0.22, tr.r*0.55, 0, 7); ctx.fill(); });
+    }
+
+    // ---- weather particles ----
     if(weather==='eso'){
-      ctx.strokeStyle='rgba(180,200,215,.55)'; ctx.lineWidth=1.4;
+      particles.clouds.forEach(function(c){
+        c.x += reduce?0:c.v*0.02; if(c.x>LW+180) c.x=-180;
+        ctx.fillStyle='rgba(40,50,60,.07)';
+        ctx.beginPath(); ctx.ellipse(c.x, 70 + (c.y%250), 140*c.sc, 74*c.sc, 0, 0, 7); ctx.fill();
+      });
+      ctx.fillStyle='rgba(40,55,70,.12)'; ctx.fillRect(0,0,LW,LH);
+      ctx.strokeStyle='rgba(205,218,230,.5)'; ctx.lineWidth=1.4;
       particles.rain.forEach(function(p){
-        if(!reduce){ p.y += p.s; p.x -= p.s*0.28; if(p.y>LH){ p.y=-10; p.x=Math.random()*LW+60; } }
-        ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-p.l*0.28, p.y+p.l); ctx.stroke();
+        if(!reduce){ p.y+=p.s*1.35; p.x-=p.s*0.45; if(p.y>LH){ p.y=-10; p.x=Math.random()*(LW+140); } }
+        ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-p.l*0.45,p.y+p.l); ctx.stroke();
       });
     }
     if(weather==='ho'){
-      ctx.fillStyle='rgba(255,255,255,.9)';
+      ctx.fillStyle='rgba(255,255,255,.92)';
       particles.snow.forEach(function(p){
-        if(!reduce){ p.y += p.s; p.d += 0.02; p.x += Math.sin(p.d)*0.6; if(p.y>LH){ p.y=-6; p.x=Math.random()*LW; } }
+        if(!reduce){ p.y+=p.s; p.d+=0.02; p.x+=Math.sin(p.d)*0.6; if(p.y>LH){ p.y=-6; p.x=Math.random()*LW; } }
         ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill();
       });
     }
-    if(weather==='eso'){
-      particles.leaves.forEach(function(p){
-        if(!reduce){ p.y += p.s; p.sw += 0.05; p.x += Math.sin(p.sw)*1.1; p.a += 0.06; if(p.y>LH){ p.y=-10; p.x=Math.random()*LW; } }
-        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a); ctx.fillStyle='#B08544';
-        ctx.beginPath(); ctx.ellipse(0,0,4,2.2,0,0,7); ctx.fill(); ctx.restore();
-      });
-    }
-    if(weather==='nap' && state.outdoorT>24){
-      var hz = ctx.createLinearGradient(0,groundY-40,0,groundY+10);
-      hz.addColorStop(0,'rgba(255,240,200,0)'); hz.addColorStop(1,'rgba(255,235,190,'+Math.min(0.22,(state.outdoorT-24)*0.02)+')');
-      ctx.fillStyle=hz; ctx.fillRect(0,groundY-40,LW,50);
+    if(weather==='nap' && state.outdoorT>26){
+      ctx.fillStyle='rgba(255,235,180,'+Math.min(0.16,(state.outdoorT-26)*0.015)+')';
+      ctx.fillRect(0,0,LW,LH);
     }
 
     ctx.restore();
     updateHud(inst);
   }
 
-  function drawCloud(x,y,sc,col,al){
-    ctx.save(); ctx.translate(x,y); ctx.scale(sc,sc); ctx.globalAlpha=al; ctx.fillStyle=col;
-    [[0,0,26],[24,6,20],[-24,6,20],[8,-12,18],[-10,-10,16]].forEach(function(c){
-      ctx.beginPath(); ctx.arc(c[0],c[1],c[2],0,7); ctx.fill();
-    });
-    ctx.globalAlpha=1; ctx.restore();
-  }
-  function drawTree(x, y, season, t, scale){
-    scale = scale||1;
-    ctx.save(); ctx.translate(x,y); ctx.scale(scale,scale);
-    ctx.fillStyle='#6B4A2E'; ctx.fillRect(-7, 0, 14, 78);
-    var sway = reduce?0:Math.sin(t*0.8 + x)*3;
-    ctx.translate(sway,0);
-    if(season==='tel'){
-      ctx.strokeStyle='#6B4A2E'; ctx.lineWidth=5;
-      [[0,-10,-34,-46],[0,-10,34,-40],[0,-30,-24,-70],[0,-30,26,-64],[0,-30,0,-84]].forEach(function(b){
-        ctx.beginPath(); ctx.moveTo(b[0],b[1]); ctx.lineTo(b[2],b[3]); ctx.stroke();
-      });
-      ctx.fillStyle='rgba(255,255,255,.85)';
-      [[-30,-46],[32,-40],[0,-84],[-22,-68],[24,-62]].forEach(function(p){ ctx.beginPath(); ctx.arc(p[0],p[1],6,0,7); ctx.fill(); });
-    } else {
-      var col = season==='osz' ? '#C4622C' : season==='tavasz' ? '#7FBF6A' : '#3E8E3E';
-      ctx.fillStyle=col;
-      [[0,-46,44],[-26,-24,30],[26,-24,30],[0,-14,34]].forEach(function(c){ ctx.beginPath(); ctx.arc(c[0],c[1],c[2],0,7); ctx.fill(); });
-      if(season==='tavasz'){
-        ctx.fillStyle='#F4C6D6';
-        for(var b=0;b<10;b++){ ctx.beginPath(); ctx.arc((Math.random()-0.5)*80, -50+(Math.random()-0.5)*50, 2.4,0,7); ctx.fill(); }
-      }
+  function drawCanopy(x,y,r,foliage,t,i){
+    var breathe = reduce?1:(1+0.02*Math.sin(t*0.7+i));
+    r *= breathe;
+    if(foliage==='tel'){
+      ctx.strokeStyle='#6B4A2E'; ctx.lineWidth=3;
+      for(var b=0;b<6;b++){ var a=b*Math.PI/3 + 0.3; ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+Math.cos(a)*r, y+Math.sin(a)*r); ctx.stroke(); }
+      ctx.fillStyle='#6B4A2E'; ctx.beginPath(); ctx.arc(x,y,r*0.34,0,7); ctx.fill();
+      ctx.fillStyle='rgba(255,255,255,.8)'; ctx.beginPath(); ctx.arc(x-r*0.18,y-r*0.2,r*0.48,0,7); ctx.fill();
+      return;
     }
-    ctx.restore();
+    var col  = foliage==='osz' ? '#C4622C' : '#3E8E3E';
+    var col2 = foliage==='osz' ? '#A9531F' : '#347A34';
+    ctx.fillStyle=col2; ctx.beginPath(); ctx.arc(x+2,y+3,r,0,7); ctx.fill();
+    ctx.fillStyle=col;  ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.10)'; ctx.beginPath(); ctx.arc(x-r*0.3,y-r*0.3,r*0.5,0,7); ctx.fill();
+    ctx.strokeStyle = foliage==='osz' ? 'rgba(120,60,20,.22)' : 'rgba(20,60,20,.2)'; ctx.lineWidth=2;
+    for(var q=0;q<3;q++){ ctx.beginPath(); ctx.arc(x,y,r*(0.5+q*0.18), 0.6+q, 2.2+q); ctx.stroke(); }
   }
+
   function roundRect(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
 
   function updateHud(inst){
@@ -1509,7 +1592,7 @@
       '<span class="hl">Fogyasztás</span><span class="hv">'+inst.totalKw.toFixed(1)+' kW</span>'+
       '<span class="hl">Napelem</span><span class="hv grn">'+inst.pvKw.toFixed(1)+' kW</span>'+
       '<span class="hl">Hálózat</span><span class="hv">'+net+'</span>'+
-      '<span class="hl hcost">Becsült havi költség</span><span class="hv hcost">'+mcTxt+'</span>';
+      '<span class="hl hcost">Havi költség</span><span class="hv hcost">'+mcTxt+'</span>';
   }
 
   /* ================= INTERACTIONS ================= */
@@ -1530,7 +1613,7 @@
     $('kSelf').textContent = Math.round(annual.selfPct)+'%';
     $('kSelfBar').style.width = Math.round(annual.selfPct)+'%';
     $('kCo2').textContent = report.co2SaveT.toLocaleString('hu-HU',{minimumFractionDigits:1,maximumFractionDigits:1})+' t';
-    renderSeasonCostChart(); renderTco();
+    renderPlainKpis(); renderSeasonCostChart(); renderTco();
     renderH24(); renderSeasonKpis();
     paintOnce();
   }
