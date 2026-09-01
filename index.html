@@ -681,12 +681,10 @@
         '<label class="consent"><input type="checkbox" name="hozzajarulas" required><span>Hozzájárulok, hogy a Solar Házépítő Kft. a megadott adataimmal felvegye velem a kapcsolatot. Az adatkezelésről az <a href="#" target="_blank" rel="noopener">adatkezelési tájékoztatóban</a> olvashatok.</span></label>'+
         '<p class="lead-err" id="leadErr" hidden></p>'+
         '<button type="submit" class="lead-submit" id="leadSubmit">Mutasd az eredményt ›</button>'+
-        '<button type="button" class="lead-skip" id="leadSkip">Inkább kihagyom</button>'+
       '</form>';
     if(old){ old.className = 'bubble out'; setTimeout(function(){ old.remove(); }, reduce?0:240); }
     host.appendChild(b);
 
-    b.querySelector('#leadSkip').addEventListener('click', function(){ startBuild(); });
     b.querySelector('#leadForm').addEventListener('submit', function(e){
       e.preventDefault();
       var f = e.target;
@@ -704,17 +702,9 @@
       errEl.hidden = true;
       var btn = b.querySelector('#leadSubmit');
       btn.disabled = true; btn.textContent = 'Küldés…';
-      sendLead({ nev:f.nev.value.trim(), email:email, telefon:tel }, function(ok, msg){
-        if(ok){
-          btn.textContent = 'Elküldve ✓';
-          setTimeout(startBuild, 650);
-        } else {
-          btn.disabled = false;
-          btn.textContent = 'Tovább az eredményhez ›';
-          errEl.hidden = false;
-          errEl.textContent = 'Az űrlapot most nem sikerült elküldeni (' + (msg || 'hálózati hiba') + '). A részletek a böngésző konzoljában. A riportot így is megnézheted.';
-          btn.onclick = function(){ startBuild(); };
-        }
+      sendLead({ nev:f.nev.value.trim(), email:email, telefon:tel }, function(ok){
+        btn.textContent = ok ? 'Elküldve ✓' : 'Kész ✓';
+        setTimeout(startBuild, ok ? 600 : 250);
       });
     });
   }
@@ -1380,12 +1370,6 @@
     ctx.strokeStyle = cold ? '#D8DEE3' : '#D8D4CB'; ctx.lineWidth=13; ctx.lineCap='round';
     ctx.beginPath(); ctx.moveTo(hs.x+44, hs.y+hs.h+6); ctx.quadraticCurveTo(210, 432, trees[1].x+10, trees[1].y-18); ctx.stroke();
     ctx.lineCap='butt';
-    if(weather==='eso'){ // wet sheen on driveway
-      ctx.save(); roundRect(drive.x, drive.y-12, drive.w, drive.h+12, 8); ctx.clip();
-      ctx.fillStyle='rgba(150,180,205,.18)';
-      for(var q=0;q<3;q++){ ctx.fillRect(drive.x+8, drive.y + ((t*40+q*60)% (drive.h)) , drive.w-16, 10); }
-      ctx.restore();
-    }
 
     // ---- pool ----
     if(state.pool){
@@ -1505,11 +1489,15 @@
       ctx.strokeStyle='#B8B8B8'; ctx.lineWidth=1; roundRect(hcx-6, hs.y+hs.h-4, 14, 16, 2); ctx.stroke();
       if(!planned){
         var x0=hcx+1, y0=hs.y+hs.h+12, x1=car.x+car.w/2, y1=car.y+6;
+        var cbx=x0-12, cby=y1+22;                       // a kábelgörbe kontrollpontja
         ctx.strokeStyle='rgba(70,110,55,.55)'; ctx.lineWidth=2;
-        ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(x0-12,y1+22, x1,y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(cbx,cby, x1,y1); ctx.stroke();
         var pp = reduce?0.5:(t*0.5)%1;
-        ctx.fillStyle='rgba(120,220,150,.9)';
-        ctx.beginPath(); ctx.arc(x0+(x1-x0)*pp, y0+(y1-y0)*pp, 3, 0, 7); ctx.fill();
+        var mt = 1-pp;
+        var bx = mt*mt*x0 + 2*mt*pp*cbx + pp*pp*x1;     // pont a görbén (kvadratikus Bézier)
+        var by = mt*mt*y0 + 2*mt*pp*cby + pp*pp*y1;
+        ctx.fillStyle='rgba(120,220,150,.95)';
+        ctx.beginPath(); ctx.arc(bx, by, 3, 0, 7); ctx.fill();
       }
     }
 
