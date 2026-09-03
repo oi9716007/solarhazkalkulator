@@ -1373,7 +1373,7 @@
     ctx.fillStyle = cold ? '#D8DEE3' : '#D8D4CB';
     roundRect(drive.x, drive.y-12, drive.w, drive.h+12, 8); ctx.fill();
     ctx.strokeStyle = cold ? '#D8DEE3' : '#D8D4CB'; ctx.lineWidth=13; ctx.lineCap='round';
-    ctx.beginPath(); ctx.moveTo(hs.x+44, hs.y+hs.h+6); ctx.quadraticCurveTo(210, 432, trees[1].x+10, trees[1].y-18); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(hs.x+44, hs.y+hs.h+6); ctx.quadraticCurveTo(210, 432, 120, 396); ctx.stroke();
     ctx.lineCap='butt';
 
     // ---- pool ----
@@ -1400,13 +1400,6 @@
         ctx.restore();
       }
     }
-
-    // ---- trees ----
-    trees.forEach(function(tr,i){
-      if(overPool(tr)) return;
-      shCircle(tr.x,tr.y,tr.r*0.9);
-      drawCanopy(tr.x, tr.y, tr.r, foliage, t, i);
-    });
 
     // ---- house ----
     shRect(hs.x,hs.y,hs.w,hs.h,6);
@@ -1511,8 +1504,6 @@
       ctx.fillStyle='rgba(255,255,255,.85)';
       roundRect(hs.x+3, hs.y+3, hs.w-6, 13, 4); ctx.fill();
       roundRect(hs.x+3, hs.y+hs.h-16, hs.w-6, 13, 4); ctx.fill();
-      trees.forEach(function(tr){ if(overPool(tr)) return;
-        ctx.beginPath(); ctx.arc(tr.x-tr.r*0.18, tr.y-tr.r*0.22, tr.r*0.55, 0, 7); ctx.fill(); });
     }
 
     // ---- weather particles ----
